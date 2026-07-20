@@ -1,0 +1,36 @@
+### auth.http
+
+### Variables (Update these after logging in)
+@baseUrl = http://localhost:8000/api/v1/auth
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg0MzU5MTc3LCJpYXQiOjE3ODQzNTgyNzcsImp0aSI6ImI4YTNmOTI1MjY5NTQ0NjY5NDJhMTE1NjFiMjk3OGM4IiwidXNlcl9pZCI6IjEifQ.0Jy8FRfn_VDTjVsNTYQQRDGs1Ni52zerd0XAH2f90WU
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MzQwMDIwMiwiaWF0IjoxNzgzMzEzODAyLCJqdGkiOiI2ZGE5NzViMDQ3N2Y0ZTgzYjNmZmU0NDZhMzMxYzM3YSIsInVzZXJfaWQiOiIxIn0.r8Qo_lHmEkwC6dZqGZOsjHBvkzW3DaNXzgZVkxmxfmw
+
+### Register a new user
+POST {{baseUrl}}/register/
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### Login
+POST {{baseUrl}}/login/
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### Get Current User Info
+GET {{baseUrl}}/me/
+Authorization: Bearer {{accessToken}}
+
+### Refresh Access Token
+POST {{baseUrl}}/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "{{refreshToken}}"
+}

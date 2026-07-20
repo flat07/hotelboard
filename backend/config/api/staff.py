@@ -1,0 +1,27 @@
+# backend/config/api/staff.py
+from django.urls import include, path
+
+urlpatterns = [
+    path(
+        "rooms/",
+        include("rooms.urls"),
+    ),
+    path(
+        "housekeeping/",
+        include("hk.urls"),
+    ),
+    path(
+        "auth/",
+        include(
+            "staff.urls",
+        ),
+    ),
+    path(
+        "engineering/",
+        include("engineering.urls"),
+    ),
+    path(
+        "room_service/",
+        include("room_service.urls"),
+    ),
+]
