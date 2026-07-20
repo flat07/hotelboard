@@ -25,3 +25,5 @@ urlpatterns = [
         include("room_service.urls"),
     ),
 ]
+
+# /api/v1/staff/auth/

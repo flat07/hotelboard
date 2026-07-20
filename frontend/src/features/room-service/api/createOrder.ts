@@ -8,7 +8,10 @@ export async function createOrder(
   token: string,
   payload: RoomServiceOrderPayload,
 ) {
-  const { data } = await api.post(`/room-service/orders/${token}/`, payload);
+  const { data } = await api.post(
+    `public/room-service/orders/${token}/`,
+    payload,
+  );
 
   return data;
 }

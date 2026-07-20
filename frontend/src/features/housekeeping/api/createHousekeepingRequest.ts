@@ -17,7 +17,7 @@ export async function createHousekeepingRequest(
 
   console.log(requestBody);
   const { data } = await api.post(
-    `/housekeeping/requests/${token}/`,
+    `public/housekeeping/requests/${token}/`,
     requestBody,
   );
   console.log("createHousekeepingRequest data ", data);

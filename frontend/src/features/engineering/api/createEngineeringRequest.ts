@@ -17,7 +17,7 @@ export async function createEngineeringRequest(
 
   console.log(requestBody);
   const { data } = await api.post(
-    `/engineering/requests/${token}/`,
+    `public/engineering/requests/${token}/`,
     requestBody,
   );
 

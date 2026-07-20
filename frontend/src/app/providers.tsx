@@ -2,7 +2,9 @@
 
 import { Toaster } from "@/components/ui/sonner";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
 
+import { AuthProvider } from "@/contexts/AuthContext";
 import { queryClient } from "@/lib/query-client";
 
 type Props = {
@@ -11,9 +13,19 @@ type Props = {
 
 export function AppProviders({ children }: Props) {
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <Toaster richColors position="top-right" />
-    </QueryClientProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          {children}
+
+          <Toaster richColors />
+        </AuthProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

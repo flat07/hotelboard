@@ -1,0 +1,226 @@
+.
+├── README.md
+├── backend
+│   ├── Makefile
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── exceptions.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── seed.py
+│   │   ├── models.py
+│   │   ├── seeders
+│   │   │   ├── eng.py
+│   │   │   ├── hk.py
+│   │   │   ├── menu.py
+│   │   │   ├── order.py
+│   │   │   ├── room.py
+│   │   │   └── staff.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── public.py
+│   │   │   ├── staff.py
+│   │   │   └── urls.py
+│   │   ├── asgi.py
+│   │   ├── env.py
+│   │   ├── exceptions
+│   │   │   └── handler.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── engineering
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── public
+│   │   │   ├── serializers.py
+│   │   │   ├── services.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── hk
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── exceptions.py
+│   │   ├── models.py
+│   │   ├── public
+│   │   │   ├── serializers.py
+│   │   │   ├── services.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── manage.py
+│   ├── project_structure.txt
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   ├── room_service
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── public
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   ├── services.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── rooms
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── public
+│   │   │   ├── exceptions.py
+│   │   │   ├── serializers.py
+│   │   │   ├── services.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── staff
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── auth.http
+│       ├── models.py
+│       ├── serializers.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── views.py
+├── frontend
+│   ├── README.md
+│   ├── components.json
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.svg
+│   │   └── icons.svg
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── app
+│   │   │   ├── providers.tsx
+│   │   │   └── router.tsx
+│   │   ├── components
+│   │   │   ├── layout
+│   │   │   │   ├── AppLogo.tsx
+│   │   │   │   ├── PageContainer.tsx
+│   │   │   │   ├── PageHeader.tsx
+│   │   │   │   ├── PublicFooter.tsx
+│   │   │   │   └── PublicLayout.tsx
+│   │   │   ├── shared
+│   │   │   │   ├── AppErrorBoundary.tsx
+│   │   │   │   ├── EmptyState.tsx
+│   │   │   │   ├── ErrorState.tsx
+│   │   │   │   ├── FormError.tsx
+│   │   │   │   ├── LoadingPage.tsx
+│   │   │   │   ├── NotFound.tsx
+│   │   │   │   ├── PageSkeleton.tsx
+│   │   │   │   ├── PageTitle.tsx
+│   │   │   │   ├── Section.tsx
+│   │   │   │   ├── SubmitButton.tsx
+│   │   │   │   └── ThemeToggle.tsx
+│   │   │   └── ui
+│   │   │       ├── button.tsx
+│   │   │       ├── card.tsx
+│   │   │       ├── checkbox.tsx
+│   │   │       ├── dropdown-menu.tsx
+│   │   │       ├── input.tsx
+│   │   │       ├── skeleton.tsx
+│   │   │       ├── sonner.tsx
+│   │   │       └── textarea.tsx
+│   │   ├── config
+│   │   │   ├── api.ts
+│   │   │   └── routes.ts
+│   │   ├── features
+│   │   │   ├── engineering
+│   │   │   │   ├── api
+│   │   │   │   │   ├── createEngineeringRequest.ts
+│   │   │   │   │   └── getEngineeringServices.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── EngineeringForm.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useCreateEngineeringRequest.ts
+│   │   │   │   │   └── useEngineeringServices.ts
+│   │   │   │   ├── pages
+│   │   │   │   │   └── EngineeringPage.tsx
+│   │   │   │   ├── schemas
+│   │   │   │   │   └── requestSchema.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── housekeeping
+│   │   │   │   ├── api
+│   │   │   │   │   ├── createHousekeepingRequest.ts
+│   │   │   │   │   └── getHousekeepingServices.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── HousekeepingForm.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useCreateHousekeepingRequest.ts
+│   │   │   │   │   └── useHousekeepingServices.ts
+│   │   │   │   ├── pages
+│   │   │   │   │   └── HousekeepingPage.tsx
+│   │   │   │   ├── schemas
+│   │   │   │   │   └── requestSchema.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── landing
+│   │   │   │   ├── api
+│   │   │   │   │   └── getGuestRoom.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── RoomCard.tsx
+│   │   │   │   │   ├── ServiceCard.tsx
+│   │   │   │   │   ├── WelcomeCard.tsx
+│   │   │   │   │   └── services.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   └── useGuestRoom.ts
+│   │   │   │   ├── pages
+│   │   │   │   │   └── LandingPage.tsx
+│   │   │   │   └── types.ts
+│   │   │   └── room-service
+│   │   │       ├── api
+│   │   │       │   ├── createOrder.ts
+│   │   │       │   └── getMenu.ts
+│   │   │       ├── components
+│   │   │       │   └── RoomServiceForm.tsx
+│   │   │       ├── hooks
+│   │   │       │   ├── useCreateOrder.ts
+│   │   │       │   └── useMenu.ts
+│   │   │       ├── pages
+│   │   │       │   └── RoomServicePage.tsx
+│   │   │       ├── schemas
+│   │   │       │   └── orderSchema.ts
+│   │   │       └── types.ts
+│   │   ├── index.css
+│   │   ├── lib
+│   │   │   ├── axios.ts
+│   │   │   ├── query-client.ts
+│   │   │   └── utils.ts
+│   │   └── main.tsx
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+└── project_structure.txt
+
+52 directories, 172 files

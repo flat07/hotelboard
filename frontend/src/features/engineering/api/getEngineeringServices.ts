@@ -8,7 +8,7 @@ export async function getEngineeringServices(
   token: string,
 ): Promise<EngineeringService[]> {
   const { data } = await api.get<EngineeringService[]>(
-    `/engineering/services/${token}/`,
+    `public/engineering/services/${token}/`,
   );
 
   return data;
