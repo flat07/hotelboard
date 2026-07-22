@@ -21,9 +21,10 @@ urlpatterns = [
         include("engineering.urls"),
     ),
     path(
-        "room_service/",
+        "room-service/",
         include("room_service.urls"),
     ),
 ]
 
+# /api/v1/staff/housekeeping/
 # /api/v1/staff/auth/

@@ -52,18 +52,28 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     async function initialize() {
-      const token = getAccessToken();
-
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
       try {
+        // console.log("initialize");
+
+        const token = getAccessToken();
+
+        // console.log("token", token);
+
+        if (!token) {
+          // console.log("No token");
+          setLoading(false);
+          return;
+        }
+
         await refreshUser();
-      } catch {
+
+        // console.log("refresh success");
+      } catch (err) {
+        // console.log(err);
+
         logout();
       } finally {
+        // console.log("finish");
         setLoading(false);
       }
     }

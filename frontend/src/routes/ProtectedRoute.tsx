@@ -1,7 +1,8 @@
 // frontend/src/routes/ProtectedRoute.tsx
 
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
+import { StaffMain } from "@/components/layout/staff/StaffMain";
 import LoadingPage from "@/components/shared/LoadingPage";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -13,8 +14,8 @@ export default function ProtectedRoute() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/staff/login" replace />;
+    return <Navigate to="/login" replace />;
   }
 
-  return <Outlet />;
+  return <StaffMain />;
 }

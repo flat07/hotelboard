@@ -1,3 +1,4 @@
+# backend/engineering/serializers.py
 from rest_framework import serializers
 
 from .models import (
@@ -57,5 +58,35 @@ class EngineeringRequestSerializer(serializers.ModelSerializer):
             "completed_at",
             "created_at",
             "updated_at",
+            "items",
+        ]
+
+
+class EngineeringRequestListSerializer(serializers.ModelSerializer):
+    room_number = serializers.CharField(
+        source="room.room_number",
+        read_only=True,
+    )
+
+    assigned_to_name = serializers.CharField(
+        source="assigned_to.get_full_name",
+        read_only=True,
+    )
+
+    items = EngineeringRequestItemSerializer(
+        many=True,
+        read_only=True,
+    )
+
+    class Meta:
+        model = EngineeringRequest
+        fields = [
+            "id",
+            "room_number",
+            "status",
+            "note",
+            "assigned_to_name",
+            "completed_at",
+            "created_at",
             "items",
         ]

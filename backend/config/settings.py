@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
+    "django_filters",
     # Local Apps
     "common",
     "staff",
@@ -130,6 +131,9 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "EXCEPTION_HANDLER": ("config.exceptions.handler.custom_exception_handler"),
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
 }
 AUTH_USER_MODEL = "staff.User"
 

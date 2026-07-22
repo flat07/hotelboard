@@ -1,5 +1,14 @@
+# backend/room_service/views.py
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from rest_framework.filters import (
+    OrderingFilter,
+    SearchFilter,
+)
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
+from .filters import RoomServiceOrderFilter
 from .models import (
     MenuCategory,
     MenuItem,
@@ -12,6 +21,40 @@ from .serializers import (
     RoomServiceOrderItemSerializer,
     RoomServiceOrderSerializer,
 )
+
+
+class RoomServiceOrderListApiView(ListAPIView):
+    permission_classes = [
+        IsAuthenticated,
+    ]
+    serializer_class = RoomServiceOrderSerializer
+
+    queryset = RoomServiceOrder.objects.select_related(
+        "room",
+        "assigned_to",
+    ).prefetch_related("items__menu_item")
+
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
+
+    ordering_fields = [
+        "-created_at",
+    ]
+
+    ordering = [
+        "-created_at",
+    ]
+
+    search_fields = [
+        "room__room_number",
+        "note",
+        "assigned_to__username",
+    ]
+
+    filterset_class = RoomServiceOrderFilter
 
 
 class MenuCategoryViewSet(viewsets.ModelViewSet):

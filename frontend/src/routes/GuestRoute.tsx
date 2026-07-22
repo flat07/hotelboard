@@ -13,7 +13,7 @@ export default function GuestRoute() {
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/staff/dashboard" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <Outlet />;

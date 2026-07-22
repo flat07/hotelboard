@@ -54,6 +54,7 @@
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── exceptions.py
+│   │   ├── filters.py
 │   │   ├── models.py
 │   │   ├── public
 │   │   │   ├── serializers.py
@@ -123,7 +124,9 @@
 │   │   ├── App.tsx
 │   │   ├── app
 │   │   │   ├── providers.tsx
-│   │   │   └── router.tsx
+│   │   │   ├── public.tsx
+│   │   │   ├── router.tsx
+│   │   │   └── staff.tsx
 │   │   ├── components
 │   │   │   ├── layout
 │   │   │   │   ├── AppLogo.tsx
@@ -155,7 +158,28 @@
 │   │   ├── config
 │   │   │   ├── api.ts
 │   │   │   └── routes.ts
+│   │   ├── contexts
+│   │   │   └── AuthContext.tsx
 │   │   ├── features
+│   │   │   ├── auth
+│   │   │   │   ├── api
+│   │   │   │   │   ├── login.ts
+│   │   │   │   │   ├── me.ts
+│   │   │   │   │   └── refresh.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── LoginForm.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useLogin.ts
+│   │   │   │   │   ├── useLogout.ts
+│   │   │   │   │   └── useMe.ts
+│   │   │   │   ├── pages
+│   │   │   │   │   ├── DashboardPage.tsx
+│   │   │   │   │   └── LoginPage.tsx
+│   │   │   │   ├── schemas
+│   │   │   │   │   └── loginSchema.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils
+│   │   │   │       └── token.ts
 │   │   │   ├── engineering
 │   │   │   │   ├── api
 │   │   │   │   │   ├── createEngineeringRequest.ts
@@ -216,11 +240,14 @@
 │   │   │   ├── axios.ts
 │   │   │   ├── query-client.ts
 │   │   │   └── utils.ts
-│   │   └── main.tsx
+│   │   ├── main.tsx
+│   │   └── routes
+│   │       ├── GuestRoute.tsx
+│   │       └── ProtectedRoute.tsx
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── project_structure.txt
 
-52 directories, 172 files
+61 directories, 190 files
