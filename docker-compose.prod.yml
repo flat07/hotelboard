@@ -1,0 +1,16 @@
+services:
+  backend:
+    env_file:
+      - .env.production
+
+  db:
+    env_file:
+      - .env.production
+
+  worker:
+    env_file:
+      - .env.production
+
+  beat:
+    env_file:
+      - .env.production

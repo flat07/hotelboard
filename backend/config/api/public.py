@@ -18,6 +18,10 @@ urlpatterns = [
         "room-service/",
         include("room_service.public.urls"),
     ),
+    path(
+        "common/",
+        include("common.urls"),
+    ),
 ]
 
 # GET    /api/v1/public/engineering/services/<token>/
@@ -27,3 +31,4 @@ urlpatterns = [
 # GET    /api/v1/public/room-service/menu/<token>/
 # POST   /api/v1/public/room-service/orders/<token>/
 # GET    /api/v1/public/rooms/guest/<token>/
+# GET    /api/v1/public/common/health/
