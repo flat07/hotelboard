@@ -15,7 +15,11 @@ services:
       - redis
 
     ports:
-      - "8000:8000"
+      - "8000"
+
+    volumes:
+      - static_data:/app/staticfiles
+      - media_data:/app/media
 
     restart: unless-stopped
 
@@ -46,7 +50,7 @@ services:
     container_name: hotelboard_frontend
 
     ports:
-      - "5173:80"
+      - "80"
 
     depends_on:
       - backend
@@ -107,6 +111,26 @@ services:
 
     restart: unless-stopped
 
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+
+    depends_on:
+      - backend
+      - frontend
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - static_data:/static
+      - media_data:/media
+
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:
+  static_data:
+  media_data:
