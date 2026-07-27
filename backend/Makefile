@@ -29,9 +29,9 @@ seed:
 
 # Install python dependencies from your requirements file
 freeze:
-	pip freeze > requirements.txt
+	pip freeze > config/requirements/requirements.txt
 install:
-	pip install -r requirements.txt
+	pip install -r config/requirements/development.txt
 
 # Show all available shortcuts in this file
 help:

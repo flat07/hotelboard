@@ -15,8 +15,8 @@ class Command(BaseCommand):
         seeders = [
             seed_staff,
             seed_rooms,
-            seed_order,
             seed_menu,
+            seed_order,
             seed_hk,
             seed_hk_requests,
             seed_eng_services,

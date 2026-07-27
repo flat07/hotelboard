@@ -13,17 +13,21 @@ export interface MenuCategory {
   items: MenuItem[];
 }
 
+export interface RoomServiceOrderItemPayload {
+  menu_item: number;
+  quantity: number;
+}
+
+export interface RoomServiceOrderPayload {
+  items: RoomServiceOrderItemPayload[];
+  note: string;
+}
 export interface RoomServiceOrderItem {
   id: number;
   menu_item: number;
   menu_item_name: string;
   quantity: number;
   price: number;
-}
-
-export interface RoomServiceOrderPayload {
-  items: RoomServiceOrderItem[];
-  note: string;
 }
 
 export interface RoomServiceOrder {

@@ -20,6 +20,7 @@
 │   │   │   ├── order.py
 │   │   │   ├── room.py
 │   │   │   └── staff.py
+│   │   ├── tasks.py
 │   │   ├── tests.py
 │   │   └── views.py
 │   ├── config
@@ -29,16 +30,29 @@
 │   │   │   ├── staff.py
 │   │   │   └── urls.py
 │   │   ├── asgi.py
-│   │   ├── env.py
+│   │   ├── celery.py
 │   │   ├── exceptions
 │   │   │   └── handler.py
-│   │   ├── settings.py
+│   │   ├── requirements
+│   │   │   ├── base.txt
+│   │   │   ├── development.txt
+│   │   │   ├── local.txt
+│   │   │   ├── production.txt
+│   │   │   └── requirements.txt
+│   │   ├── settings
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── dev.py
+│   │   │   ├── env.py
+│   │   │   ├── local.py
+│   │   │   └── prod.py
 │   │   ├── urls.py
 │   │   └── wsgi.py
 │   ├── engineering
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
+│   │   ├── filters.py
 │   │   ├── models.py
 │   │   ├── public
 │   │   │   ├── serializers.py
@@ -66,14 +80,16 @@
 │   │   ├── tests.py
 │   │   ├── urls.py
 │   │   └── views.py
+│   ├── logs
+│   │   └── django.log
 │   ├── manage.py
 │   ├── project_structure.txt
 │   ├── pyproject.toml
-│   ├── requirements.txt
 │   ├── room_service
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
+│   │   ├── filters.py
 │   │   ├── models.py
 │   │   ├── public
 │   │   │   ├── __init__.py
@@ -100,16 +116,25 @@
 │   │   ├── tests.py
 │   │   ├── urls.py
 │   │   └── views.py
-│   └── staff
-│       ├── __init__.py
-│       ├── admin.py
-│       ├── apps.py
-│       ├── auth.http
-│       ├── models.py
-│       ├── serializers.py
-│       ├── tests.py
-│       ├── urls.py
-│       └── views.py
+│   ├── staff
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── auth.http
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── static
+├── docker
+│   ├── backend
+│   │   ├── Dockerfile
+│   │   └── entrypoint.sh
+│   └── frontend
+│       ├── Dockerfile
+│       └── nginx.conf
+├── docker-compose.yml
 ├── frontend
 │   ├── README.md
 │   ├── components.json
@@ -133,7 +158,11 @@
 │   │   │   │   ├── PageContainer.tsx
 │   │   │   │   ├── PageHeader.tsx
 │   │   │   │   ├── PublicFooter.tsx
-│   │   │   │   └── PublicLayout.tsx
+│   │   │   │   ├── PublicLayout.tsx
+│   │   │   │   └── staff
+│   │   │   │       ├── Footer.tsx
+│   │   │   │       ├── Header.tsx
+│   │   │   │       └── StaffMain.tsx
 │   │   │   ├── shared
 │   │   │   │   ├── AppErrorBoundary.tsx
 │   │   │   │   ├── EmptyState.tsx
@@ -183,13 +212,19 @@
 │   │   │   ├── engineering
 │   │   │   │   ├── api
 │   │   │   │   │   ├── createEngineeringRequest.ts
+│   │   │   │   │   ├── getEngineeringRequests.ts
 │   │   │   │   │   └── getEngineeringServices.ts
 │   │   │   │   ├── components
-│   │   │   │   │   └── EngineeringForm.tsx
+│   │   │   │   │   ├── EgnineeringRequestList.tsx
+│   │   │   │   │   ├── EngineeringFilters.tsx
+│   │   │   │   │   ├── EngineeringForm.tsx
+│   │   │   │   │   └── EngineeringRequestCard.tsx
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useCreateEngineeringRequest.ts
+│   │   │   │   │   ├── useEngineeringRequests.ts
 │   │   │   │   │   └── useEngineeringServices.ts
 │   │   │   │   ├── pages
+│   │   │   │   │   ├── EngineeringDashboard.tsx
 │   │   │   │   │   └── EngineeringPage.tsx
 │   │   │   │   ├── schemas
 │   │   │   │   │   └── requestSchema.ts
@@ -197,13 +232,19 @@
 │   │   │   ├── housekeeping
 │   │   │   │   ├── api
 │   │   │   │   │   ├── createHousekeepingRequest.ts
+│   │   │   │   │   ├── getHousekeepingRequests.ts
 │   │   │   │   │   └── getHousekeepingServices.ts
 │   │   │   │   ├── components
-│   │   │   │   │   └── HousekeepingForm.tsx
+│   │   │   │   │   ├── HousekeepingFilters.tsx
+│   │   │   │   │   ├── HousekeepingForm.tsx
+│   │   │   │   │   ├── HousekeepingRequestCard.tsx
+│   │   │   │   │   └── HousekeepingRequestList.tsx
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useCreateHousekeepingRequest.ts
+│   │   │   │   │   ├── useHousekeepingRequests.ts
 │   │   │   │   │   └── useHousekeepingServices.ts
 │   │   │   │   ├── pages
+│   │   │   │   │   ├── HousekeepingDashboard.tsx
 │   │   │   │   │   └── HousekeepingPage.tsx
 │   │   │   │   ├── schemas
 │   │   │   │   │   └── requestSchema.ts
@@ -224,13 +265,19 @@
 │   │   │   └── room-service
 │   │   │       ├── api
 │   │   │       │   ├── createOrder.ts
-│   │   │       │   └── getMenu.ts
+│   │   │       │   ├── getMenu.ts
+│   │   │       │   └── getOrders.ts
 │   │   │       ├── components
+│   │   │       │   ├── OrderCard.tsx
+│   │   │       │   ├── OrderFilters.tsx
+│   │   │       │   ├── OrderList.tsx
 │   │   │       │   └── RoomServiceForm.tsx
 │   │   │       ├── hooks
 │   │   │       │   ├── useCreateOrder.ts
-│   │   │       │   └── useMenu.ts
+│   │   │       │   ├── useMenu.ts
+│   │   │       │   └── useOrder.ts
 │   │   │       ├── pages
+│   │   │       │   ├── RoomServiceDashboard.tsx
 │   │   │       │   └── RoomServicePage.tsx
 │   │   │       ├── schemas
 │   │   │       │   └── orderSchema.ts
@@ -250,4 +297,4 @@
 │   └── vite.config.ts
 └── project_structure.txt
 
-61 directories, 190 files
+69 directories, 229 files
