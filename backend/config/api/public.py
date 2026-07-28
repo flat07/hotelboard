@@ -32,3 +32,4 @@ urlpatterns = [
 # POST   /api/v1/public/room-service/orders/<token>/
 # GET    /api/v1/public/rooms/guest/<token>/
 # GET    /api/v1/public/common/health/
+# http://localhost/api/v1/public/rooms/guest/room-101-test-token/

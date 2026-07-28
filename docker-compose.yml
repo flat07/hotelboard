@@ -14,7 +14,7 @@ services:
       - db
       - redis
 
-    ports:
+    expose:
       - "8000"
 
     volumes:
@@ -52,21 +52,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  frontend:
-    build:
-      context: .
-      dockerfile: docker/frontend/Dockerfile
-
-    container_name: hotelboard_frontend
-
-    ports:
-      - "80"
-
-    depends_on:
-      - backend
-
-    restart: unless-stopped
 
   redis:
     image: redis:8-alpine
@@ -122,27 +107,27 @@ services:
 
     restart: unless-stopped
 
-  nginx:
+  caddy:
     build:
       context: .
-      dockerfile: docker/nginx/Dockerfile
+      dockerfile: docker/caddy/Dockerfile
+
+    container_name: hotelboard_caddy
 
     depends_on:
       - backend
-      - frontend
 
     ports:
       - "80:80"
 
     volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+
       - static_data:/static
       - media_data:/media
 
-    healthcheck:
-      test: ["CMD", "nginx", "-t"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+      - caddy_data:/data
+      - caddy_config:/config
 
     restart: unless-stopped
 
@@ -151,3 +136,5 @@ volumes:
   redis_data:
   static_data:
   media_data:
+  caddy_data:
+  caddy_config:
