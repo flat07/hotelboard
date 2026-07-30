@@ -2,6 +2,7 @@
 from decimal import Decimal
 
 from django.db import transaction
+from django.db.models import Prefetch
 
 from room_service.models import (
     MenuCategory,
@@ -18,7 +19,15 @@ def get_menu_categories():
             is_active=True,
         )
         .prefetch_related(
-            "items",
+            Prefetch(
+                "items",
+                queryset=MenuItem.objects.filter(
+                    is_available=True,
+                ).order_by(
+                    "display_order",
+                    "name",
+                ),
+            ),
         )
         .order_by(
             "display_order",

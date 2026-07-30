@@ -17,7 +17,7 @@ flush:
 	python manage.py flush --no-input
 # Run your Django unit tests
 test:
-	python manage.py test
+	python -m pytest
 
 # Open the interactive Django shell
 shell:
@@ -31,7 +31,7 @@ seed:
 freeze:
 	pip freeze > config/requirements/requirements.txt
 install:
-	pip install -r config/requirements/development.txt
+	python -m pip install -r config/requirements/development.txt
 
 # Show all available shortcuts in this file
 help:

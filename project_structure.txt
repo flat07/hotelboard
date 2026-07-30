@@ -22,6 +22,7 @@
 │   │   │   └── staff.py
 │   │   ├── tasks.py
 │   │   ├── tests.py
+│   │   ├── urls.py
 │   │   └── views.py
 │   ├── config
 │   │   ├── __init__.py
@@ -85,6 +86,7 @@
 │   ├── manage.py
 │   ├── project_structure.txt
 │   ├── pyproject.toml
+│   ├── pytest.ini
 │   ├── room_service
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -126,20 +128,43 @@
 │   │   ├── tests.py
 │   │   ├── urls.py
 │   │   └── views.py
-│   └── static
+│   ├── static
+│   └── tests
+│       ├── __init__.py
+│       ├── api
+│       │   ├── __init__.py
+│       │   ├── test_auth.py
+│       │   ├── test_public_engineering.py
+│       │   ├── test_public_housekeeping.py
+│       │   ├── test_public_menu.py
+│       │   ├── test_public_room_service.py
+│       │   ├── test_public_rooms.py
+│       │   ├── test_staff_permissions.py
+│       │   └── test_staff_rooms.py
+│       ├── factories
+│       │   ├── rooms.py
+│       │   └── staff.py
+│       ├── services
+│       │   └── test_room_lookup.py
+│       └── test_settings.py
 ├── docker
 │   ├── backend
 │   │   ├── Dockerfile
 │   │   └── entrypoint.sh
+│   ├── caddy
+│   │   ├── Caddyfile
+│   │   └── Dockerfile
 │   └── frontend
-│       ├── Dockerfile
-│       └── nginx.conf
+│       └── Dockerfile
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
 ├── docker-compose.yml
 ├── frontend
 │   ├── README.md
 │   ├── components.json
 │   ├── eslint.config.js
 │   ├── index.html
+│   ├── mockServiceWorker.js
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── public
@@ -196,6 +221,7 @@
 │   │   │   │   │   ├── me.ts
 │   │   │   │   │   └── refresh.ts
 │   │   │   │   ├── components
+│   │   │   │   │   ├── LoginForm.test.tsx
 │   │   │   │   │   └── LoginForm.tsx
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useLogin.ts
@@ -203,6 +229,7 @@
 │   │   │   │   │   └── useMe.ts
 │   │   │   │   ├── pages
 │   │   │   │   │   ├── DashboardPage.tsx
+│   │   │   │   │   ├── LoginPage.test.tsx
 │   │   │   │   │   └── LoginPage.tsx
 │   │   │   │   ├── schemas
 │   │   │   │   │   └── loginSchema.ts
@@ -288,13 +315,18 @@
 │   │   │   ├── query-client.ts
 │   │   │   └── utils.ts
 │   │   ├── main.tsx
-│   │   └── routes
-│   │       ├── GuestRoute.tsx
-│   │       └── ProtectedRoute.tsx
+│   │   ├── routes
+│   │   │   ├── GuestRoute.tsx
+│   │   │   └── ProtectedRoute.tsx
+│   │   └── test
+│   │       ├── handlers.ts
+│   │       ├── render.tsx
+│   │       ├── server.ts
+│   │       └── setup.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── project_structure.txt
 
-69 directories, 229 files
+75 directories, 255 files

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 PROJECT_DIR = BASE_DIR.parent
-ENV_FILE = os.getenv("ENV_FILE", ".env.development")
+ENV_FILE = os.getenv("ENV_FILE", ".env")
 
 ENV_PATH = PROJECT_DIR / ENV_FILE
 
